@@ -23,6 +23,15 @@ Users can provide the API key directly as a command-line argument or set it thro
 
 ## Usage
 
+Run using the following commands
+
+```
+export GCP_PROJECT_ID=""
+export GCP_LOCATION=""
+export GCP_IMG_GEN_MODEL=""
+
+```
+
 ```bash
 python cli_gcp.py --prompt <prompt> [--size <size>] [--quality <quality>] [--number <number>]
 ```
@@ -33,3 +42,4 @@ python cli_gcp.py --prompt <prompt> [--size <size>] [--quality <quality>] [--num
 - `-s`, `--size`: Size of the image to generate, format WxH (e.g. 1024x1024). Default is 1024x1024.
 - `-q`, `--quality`: Quality of the generated image. Allowed values are "standard" or "hd". Default is "standard".
 - `-n`, `--number`: Number of images to generate. Default is 1.
+

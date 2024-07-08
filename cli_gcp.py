@@ -5,7 +5,7 @@ import vertexai
 from vertexai.preview.vision_models import ImageGenerationModel
 
 
-from dotenv import load_dotenv
+
 # Set up defaults and get API key from environment variable
 defaults = {
    
@@ -13,7 +13,7 @@ defaults = {
     "quality": "standard",
     "number": "1",
 }
-load_dotenv(".env")
+
 # create VertexAI client
 
 # TODO(developer): Update and un-comment below lines
