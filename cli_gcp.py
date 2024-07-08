@@ -12,6 +12,7 @@ defaults = {
     "size": "1024x1024",
     "quality": "standard",
     "number": "1",
+    "output_path":"page_test.png"
 }
 
 # create VertexAI client
@@ -41,6 +42,8 @@ def validate_and_parse_args(parser):
     
     if not args.prompt:
         parser.error('The --prompt argument is required.')
+    if not args.output_path:
+        parser.error('The --prompt output_path is required.')
     if not args.number.isdigit():
         parser.error('The --number argument must be a number.')
     args.number = int(args.number)
@@ -59,6 +62,8 @@ def main():
                         help=f'Quality of the generated image. Allowed values are "standard" or "hd". Default is "{defaults["quality"]}"')
     parser.add_argument('-n', '--number', type=str, default=defaults["number"],
                         help='Number of images to generate. Default is 1.')
+    parser.add_argument('-o', '--output_path', type=str, default=defaults["output_path"],
+                        help='Output path of images to generate. Default is page1.png.')
     args = validate_and_parse_args(parser)
 
     # Initialize Vertex AI client
@@ -79,7 +84,7 @@ def main():
         person_generation="allow_adult",
         )
 
-        images[0].save(location=output_file, include_generation_parameters=False)
+        images[0].save(location=args.output_path, include_generation_parameters=False)
 
         # Optional. View the generated image in a notebook.
         # images[0].show()
