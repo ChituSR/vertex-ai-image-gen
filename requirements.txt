@@ -1,0 +1,4 @@
+# requirements.txt
+openai
+argparse
+google-cloud-aiplatform

@@ -1,0 +1,4 @@
+-p, --prompt: Prompt for image generation.
+-s, --size: Size of the image to generate, format WxH. Default is 1024x1024.
+-q, --quality: Quality of the generated image. Allowed values are 'standard' or 'hd'. Default is 'standard'.
+-n, --number: Number of images to generate. Default is 1.
