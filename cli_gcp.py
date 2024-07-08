@@ -8,8 +8,7 @@ from vertexai.preview.vision_models import ImageGenerationModel
 from dotenv import load_dotenv
 # Set up defaults and get API key from environment variable
 defaults = {
-    "api_key": os.getenv('OPENAI_API_KEY'),
-    "model": "gpt-4-vision",#"dall-e-3",
+   
     "size": "1024x1024",
     "quality": "standard",
     "number": "1",
@@ -21,13 +20,14 @@ load_dotenv(".env")
 # create VertexAI client
 project_id = os.getenv("GCP_PROJECT_ID")
 location_id=os.getenv("GCP_LOCATION")
+img_model_id=os.getenv("GCP_IMG_GEN_MODEL")
 output_file = "page1.png"
 #prompt = "Generate a cover book for story Binky-The-Adventurous-Bunny" # The text prompt describing what you want to see.
 
 # Initialize VertexAI client
 vertexai.init(project=project_id, location=location_id)
-
-model = ImageGenerationModel.from_pretrained("imagegeneration@006")
+# Initialize Image generaton Model 
+model = ImageGenerationModel.from_pretrained(img_model_id)
 
 
 # Function to validate and parse arguments
@@ -61,10 +61,10 @@ def main():
                         help='Number of images to generate. Default is 1.')
     args = validate_and_parse_args(parser)
 
-    # Initialize OpenAI client
-    #client = openai.OpenAI(api_key=args.api_key)
+    # Initialize Vertex AI client
    
-    # Make request to the OpenAI API
+   
+    # Make request to the Vertex AI API
     try:
         images = model.generate_images(
         prompt=args.prompt,
