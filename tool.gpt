@@ -1,4 +1,9 @@
--p, --prompt: Prompt for image generation.
--s, --size: Size of the image to generate, format WxH. Default is 1024x1024.
--q, --quality: Quality of the generated image. Allowed values are 'standard' or 'hd'. Default is 'standard'.
--n, --number: Number of images to generate. Default is 1.
+name: image-generation
+
+description: Generates images based on the specified parameters and returns a list of URLs to the generated images.
+args: prompt: (required) The text prompt based on which the GPT model will generate a response
+args: size: (optional) The size of the image to generate, format WxH (e.g. 1024x1024). Defaults to 1024x1024.
+args: quality: (optional) The quality of the generated image. Allowed values are "standard" or "hd". Default is "standard".
+args: number: (optional) The number of images to generate. Defaults to 1.
+
+#!/usr/bin/env python3 ${GPTSCRIPT_TOOL_DIR}/cli_gcp.py --prompt="${prompt}" --size="${size}" --quality="${quality}" --number="${number}"
